@@ -1,0 +1,48 @@
+﻿@model IList<string>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <p>Given n pairs of parentheses, generate all combinations of well-formed parentheses.</p>
+    <p><b>Constraints: </b>1 <= n <= 8</p>
+    <form asp-action="Index">
+        <div class="form-group mt-5">
+            <label>
+                Input n:
+                <input id="inputField" name="n" pattern="^[1-8]$" class="form-control"/>
+            </label>
+            <button type="submit" class="btn btn-success mb-1">Generate</button>
+        </div>
+    </form>
+    <div style="display:flex;justify-content:center;">
+        <div id="resultDiv" class="mt-5" style="overflow-x:hidden;height: 200px;background:lightblue;width:150px">
+            @{
+                foreach(var combination in Model)
+                {
+                    <p>@combination</p>
+                }
+            } 
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        const inputField = document.getElementById('inputField');
+          
+        inputField.addEventListener('keyup', function (event) {
+          isValidInput = inputField.checkValidity();
+          isFilledInput = inputField.value != '';
+          
+          if ( isValidInput && isFilledInput) {
+            inputField.style.backgroundColor='#91F193';
+            console.log("valid")
+          } else {
+            inputField.style.backgroundColor='#FA5E71';
+            console.log("invalid")
+          }
+        });
+  
+</script>
+}
