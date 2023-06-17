@@ -41,6 +41,7 @@ namespace UnitTests
         /// </summary>
         /// <param name="n"></param>
         [Theory]
+        [InlineData(-1)]
         [InlineData(0)]
         [InlineData(9)]
         public void GenerateParenthesis_GivenInvalidInput_ThrowsArgumentOutOfRangeException(int n)
@@ -75,6 +76,7 @@ namespace UnitTests
         /// </summary>
         /// <param name="n"></param>
         [Theory]
+        [InlineData(-1)]
         [InlineData(0)]
         [InlineData(9)]
         public void Index_GivenInvalidInput_ReturnViewResultWithIndexVM_IsInRangeFalse(int n)

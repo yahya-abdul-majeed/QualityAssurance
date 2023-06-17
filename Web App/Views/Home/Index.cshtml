@@ -40,14 +40,18 @@
           
         inputField.addEventListener('keyup', function (event) {
           isValidInput = inputField.checkValidity();
-          isFilledInput = inputField.value != '';
+          isFilledInput = inputField.value != ''
           
-          if ( isValidInput && isFilledInput) {
+          if ( isValidInput) {
             inputField.style.backgroundColor='#91F193';
             console.log("valid")
-          } else {
+          }
+          if(!isValidInput && isFilledInput){
             inputField.style.backgroundColor='#FA5E71';
             console.log("invalid")
+          }
+          if(!isFilledInput){
+            inputField.style.backgroundColor='transparent';
           }
         });
   
