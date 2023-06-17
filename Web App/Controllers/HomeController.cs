@@ -7,8 +7,6 @@ namespace Web_App.Controllers
 {
     public class HomeController : Controller
     {
-
-
         public IActionResult Index()
         {
             var VM = new IndexVM();
@@ -31,6 +29,8 @@ namespace Web_App.Controllers
         }
 
         public IList<string> GenerateParenthesis(int n) {
+            if(n<1 || n > 8)
+                throw new ArgumentOutOfRangeException(nameof(n),"Valid values of n are 1<=n<=8");
             var result = new List<string>();
             var seq = new StringBuilder();
             
@@ -65,6 +65,4 @@ namespace Web_App.Controllers
         }
     }
 
-    public class Solution {
-}
 }
