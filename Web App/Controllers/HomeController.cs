@@ -11,14 +11,23 @@ namespace Web_App.Controllers
 
         public IActionResult Index()
         {
-            var list = new List<string>();
-            return View(list);
+            var VM = new IndexVM();
+            return View(VM);
         }
         [HttpPost]
         public IActionResult Index(int n)
         {
-            var list = GenerateParenthesis(n);
-            return View(list);
+            var VM = new IndexVM();
+            if(n > 8 || n < 1)
+            {
+                VM.IsInRange = false;
+                VM.ErrorMessage = "Error: n should be between 1 and 8 inclusive";
+            }
+            else
+            {
+                VM.Combinations = GenerateParenthesis(n);
+            }
+            return View(VM);
         }
 
         public IList<string> GenerateParenthesis(int n) {

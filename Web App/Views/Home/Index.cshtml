@@ -1,4 +1,4 @@
-﻿@model IList<string>
+﻿@model IndexVM 
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,7 +10,7 @@
         <div class="form-group mt-5">
             <label>
                 Input n:
-                <input id="inputField" name="n" pattern="^[1-8]$" class="form-control"/>
+                <input id="inputField" name="n" pattern="^[1-8]$"  class="form-control"/>
             </label>
             <button type="submit" class="btn btn-success mb-1">Generate</button>
         </div>
@@ -18,13 +18,20 @@
     <div style="display:flex;justify-content:center;">
         <div id="resultDiv" class="mt-5" style="overflow-x:hidden;height: 200px;background:lightblue;width:150px">
             @{
-                foreach(var combination in Model)
+                foreach(var combination in Model.Combinations)
                 {
                     <p>@combination</p>
                 }
             } 
         </div>
     </div>
+
+    @{
+        if (!Model.IsInRange)
+        {
+            <p style="color:red;" class="m-3"><b>@Model.ErrorMessage</b></p>
+        }
+    }
 </div>
 
 @section Scripts{
