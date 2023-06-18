@@ -4,15 +4,15 @@
 }
 
 <div class="text-center">
-    <p>Given n pairs of parentheses, generate all combinations of well-formed parentheses.</p>
-    <p><b>Constraints: </b>1 <= n <= 8</p>
+    <p id="Prompt">Given n pairs of parentheses, generate all combinations of well-formed parentheses.</p>
+    <p id="constraints"><b>Constraints: </b>1 <= n <= 8</p>
     <form asp-action="Index">
         <div class="form-group mt-5">
             <label>
                 Input n:
                 <input id="inputField" name="n" pattern="^[1-8]$"  class="form-control"/>
             </label>
-            <button type="submit" class="btn btn-success mb-1">Generate</button>
+            <button id="btnGenerate" type="submit" class="btn btn-success mb-1">Generate</button>
         </div>
     </form>
     <div style="display:flex;justify-content:center;">
@@ -20,7 +20,7 @@
             @{
                 foreach(var combination in Model.Combinations)
                 {
-                    <p>@combination</p>
+                    <p class="combination">@combination</p>
                 }
             } 
         </div>
@@ -42,7 +42,7 @@
           isValidInput = inputField.checkValidity();
           isFilledInput = inputField.value != ''
           
-          if ( isValidInput) {
+          if (isValidInput) {
             inputField.style.backgroundColor='#91F193';
             console.log("valid")
           }
